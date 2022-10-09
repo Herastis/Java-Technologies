@@ -3,12 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.sql.DriverManager.println;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Scanner;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,10 +23,11 @@ public class WordServlet extends HttpServlet {
             throws ServletException, IOException {
 
         PrintWriter writer = response.getWriter();
+
         String word = request.getParameter("word");
         Integer size = Integer.valueOf(request.getParameter("size"));
 
-        //Letters of word in ordered list
+        //1)Letters of word in ordered list
         char[] chars = word.toCharArray();
         Arrays.sort(chars);
 
@@ -38,14 +40,20 @@ public class WordServlet extends HttpServlet {
         }
         htmlRespone += "]. </h2> </br>";
 
-        //Returns all the permutations of length size
+        //2)Returns all the permutations of length size
+        ArrayList<String> permutations = getPermutation(word, "", size);
         if (size > word.length()) {
             htmlRespone += "<h2>Size of permutation is bigger than the word size!<h2>";
         } else {
-            htmlRespone += "<h2>Permutations: " + getPermutation(word, "", size) + "</h2>";
+            htmlRespone += "<h2>Permutations: " + permutations + "</h2>";
             htmlRespone += "</html>";
         }
 
+        //3)Return only the sequence forming valid words from a dictionary
+        //Search in dictionary for all the sequences forming valid words
+        ArrayList<String> sequences = getPermutation(word, "", 0);
+        ArrayList<String> validWordsSequence = readFromDictionary(sequences);
+        htmlRespone += "<h2>Valid words sequence: " + validWordsSequence + "</h2>";
         writer.println(htmlRespone);
     }
 
@@ -65,11 +73,32 @@ public class WordServlet extends HttpServlet {
         ArrayList<String> res = new ArrayList<>();
         if (size == 0) {
             // If the size is 0 (default), it will return all the sequences.
-            permutation(word, prefix, word.length(), res);
+            for (int i = 1; i <= word.length(); i++) {
+                permutation(word, prefix, i, res);
+            }
+        } else {
+            permutation(word, prefix, size, res);
         }
-
-        permutation(word, prefix, size, res);
-        Collections.sort(res);
         return res;
+    }
+
+    private static ArrayList<String> readFromDictionary(ArrayList<String> permutations) throws FileNotFoundException {
+        ArrayList<String> validWordsSequence = new ArrayList<>();
+        try ( Scanner scanner = new Scanner(new File("F:\\Github\\Java-Technologies\\Dictionary.txt"))) {
+            String onePermutation;
+            while (scanner.hasNextLine()) {
+                //Get each word from the dictionary file
+                String word = scanner.nextLine();
+                for (int i = 0; i < permutations.size(); i++) {
+                    //Get each permutation
+                    onePermutation = permutations.get(i);
+                    if (onePermutation.toLowerCase().equals(word.toLowerCase())) {
+                        //Add to the seuqence  all the valid words
+                        validWordsSequence.add(word);
+                    }
+                }
+            }
+        }
+        return validWordsSequence;
     }
 }
