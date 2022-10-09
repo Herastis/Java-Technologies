@@ -3,7 +3,7 @@
 Lab 1
 
 Compulsory (1p)
-1) Create a servlet that receives a word and returns an HTML page containing the letters of that word presented as an ordered list. ✔️
+Create a servlet that receives a word and returns an HTML page containing the letters of that word presented as an ordered list. ✔️
 
 Homework (2p)
-2) It receives an integer as a parameter, called size, and it returns all the permutations of length size of the given letters. If the size is 0 (default), it will return all the sequences. ✔️
+It receives an integer as a parameter, called size, and it returns all the permutations of length size of the given letters. If the size is 0 (default), it will return all the sequences. ✔️
