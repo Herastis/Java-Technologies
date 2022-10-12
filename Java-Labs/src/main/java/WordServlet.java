@@ -95,6 +95,8 @@ public class WordServlet extends HttpServlet {
                     if (onePermutation.toLowerCase().equals(word.toLowerCase())) {
                         //Add to the seuqence  all the valid words
                         validWordsSequence.add(word);
+                        //delete word from list of permutations after being found in dictionary
+                        permutations.remove(i);
                     }
                 }
             }
