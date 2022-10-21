@@ -1,23 +1,32 @@
 package com.mycompany.lab1.domain.entities;
 
+//The Bean
+import java.util.ArrayList;
+
 public class Word {
 
-    private String inputWord;
+    private ArrayList<String> wordSequence;
+    private int permutationSize;
 
-    public String getInputWord() {
-        return inputWord;
+    public int getPermutationSize() {
+        return permutationSize;
     }
 
-    public void setInputWord(String inputWord) {
-        this.inputWord = inputWord;
+    public void setPermutationSize(int permutationSize) {
+        this.permutationSize = permutationSize;
     }
 
-    public int getSize() {
-        return size;
+    public ArrayList<String> getWordSequence() {
+        return wordSequence;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setWordSequence(ArrayList<String> wordSequence) {
+        this.wordSequence = wordSequence;
     }
-    private int size;
+
+    public Word(ArrayList<String> inputWord, int permutationSize) {
+        this.wordSequence = inputWord;
+        this.permutationSize = permutationSize;
+    }
+
 }

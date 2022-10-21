@@ -17,10 +17,7 @@
     <%! String message = "Fill the form!";%>
 
     <body>
-        <%
-            out.println("<H>" + message + "</H>");
-        %>
-        <form method="post" action="wordServlet">
+        <form action="controller">
             Word: <input type="text" name="word"/>
             Size: <input type="number" name="size"/>
             <input type="submit"/>

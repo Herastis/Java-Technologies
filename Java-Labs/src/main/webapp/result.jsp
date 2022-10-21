@@ -4,6 +4,7 @@
     Author     : tomes
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,8 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <table>
-
-        </table>
+        <h2>Length of each permutation: ${words.permutationSize} </h2>
+        <h2>Permutations: ${words.wordSequence} </h2>
     </body>
 </html>
