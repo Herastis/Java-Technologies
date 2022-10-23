@@ -1,7 +1,7 @@
 package com.mycompany.lab1.domain.entities;
 
-//The Bean
 import java.util.ArrayList;
+//The Bean
 
 public class Word {
 

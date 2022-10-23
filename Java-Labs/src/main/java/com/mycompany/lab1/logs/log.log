@@ -1,0 +1,16 @@
+Oct 23, 2022 2:06:04 PM com.mycompany.lab1.filters.LogRequestsFilter doFilter
+INFO: GET
+Oct 23, 2022 2:06:04 PM com.mycompany.lab1.filters.LogRequestsFilter doFilter
+INFO: 0:0:0:0:0:0:0:1
+Oct 23, 2022 2:06:04 PM com.mycompany.lab1.filters.LogRequestsFilter doFilter
+INFO: /Java-Labs/input.jsp
+Oct 23, 2022 2:06:04 PM com.mycompany.lab1.filters.LogRequestsFilter doFilter
+INFO: [Ljavax.servlet.http.Cookie;@286a3d8a
+Oct 23, 2022 2:06:04 PM com.mycompany.lab1.filters.LogRequestsFilter doFilter
+INFO: null
+Oct 23, 2022 2:06:04 PM com.mycompany.lab1.filters.LogRequestsFilter doFilter
+INFO: 9d03b34d335e8b7ee0c18a2ca4ea
+Oct 23, 2022 2:06:04 PM com.mycompany.lab1.filters.LogRequestsFilter doFilter
+INFO: en_US
+Oct 23, 2022 2:06:04 PM com.mycompany.lab1.filters.LogRequestsFilter doFilter
+INFO: Sun Oct 23 14:06:04 EEST 2022
