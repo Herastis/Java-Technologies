@@ -35,3 +35,6 @@ A web page for viewing the teams in the database. ✔️
 
 Homework(2p)
 Create the support for managing the teams, using a datatable. ✔️
+Define a page for creating a new team or editing an existing one, using a modal dialog.✔️
+Define the web-flow using navigation-rules.✔️
+Internationalize the user interface and offer support for at least two locales.✔️
