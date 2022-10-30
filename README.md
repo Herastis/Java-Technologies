@@ -24,3 +24,14 @@ a server-side component responsible with the business-logic of the application: 
 a server-side component responsible with controlling the web-flow. ✔️
 A web filter that will log all requests received by input.jsp.✔️
 A web filter that will decorate the response by adding a specific prelude (at the beginning) and a specific coda (at the end) to the generated HTML page.✔️
+
+Lab 3
+
+Compulsory (1p)
+A relational database in order to store and retrieve data. (PostgreSQL is recommended). ✔️
+You should have at least the tables: teams and cities. ✔️
+A JSF project using Maven ✔️
+A web page for viewing the teams in the database. ✔️
+
+Homework(2p)
+Create the support for managing the teams, using a datatable. ✔️
