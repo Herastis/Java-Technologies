@@ -9,6 +9,7 @@ import java.sql.*;
 import java.util.*;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.component.UIInput;
 import javax.inject.Named;
 
 /**
@@ -18,6 +19,42 @@ import javax.inject.Named;
 @Named(value = "teamBean")
 @SessionScoped
 public class TeamBean implements Serializable {
+
+    public UIInput getNameComponent() {
+        return nameComponent;
+    }
+
+    public void setNameComponent(UIInput nameComponent) {
+        this.nameComponent = nameComponent;
+    }
+
+    public UIInput getDateComponent() {
+        return dateComponent;
+    }
+
+    public void setDateComponent(UIInput dateComponent) {
+        this.dateComponent = dateComponent;
+    }
+
+    public UIInput getCityComponent() {
+        return cityComponent;
+    }
+
+    public void setCityComponent(UIInput cityComponent) {
+        this.cityComponent = cityComponent;
+    }
+
+    public ArrayList<TeamInfo> getList() {
+        return list;
+    }
+
+    public void setList(ArrayList<TeamInfo> list) {
+        this.list = list;
+    }
+
+    private UIInput nameComponent;
+    private UIInput dateComponent;
+    private UIInput cityComponent;
 
     private ArrayList<TeamInfo> list = new ArrayList<>();
 
@@ -53,7 +90,6 @@ public class TeamBean implements Serializable {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from teams");
             while (rs.next()) {
-                System.out.println("Orice arata");
                 System.out.println(rs.getString(1));
                 TeamInfo team = new TeamInfo(rs.getString(1), rs.getString(2),
                         rs.getString(3));
@@ -63,4 +99,17 @@ public class TeamBean implements Serializable {
             System.out.println(e);
         }
     }
+
+    public void nameComponentMethod() {
+        nameComponent.setRendered(false);
+    }
+
+    public void dateComponentMethod() {
+        dateComponent.setRendered(false);
+    }
+
+    public void cityComponenttMethod() {
+        cityComponent.setRendered(false);
+    }
+
 }
