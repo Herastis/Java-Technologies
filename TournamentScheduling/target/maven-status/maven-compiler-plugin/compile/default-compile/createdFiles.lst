@@ -1,2 +1,6 @@
+com\mycompany\lab1\domain\entities\City.class
+com\mycompany\lab1\domain\entities\TeamBean.class
+com\mycompany\lab1\domain\entities\TeamInfo.class
 com\mycompany\tournamentscheduling\JakartaRestConfiguration.class
+com\mycompany\lab1\domain\entities\InternationalizeBean.class
 com\mycompany\tournamentscheduling\resources\JakartaEE8Resource.class

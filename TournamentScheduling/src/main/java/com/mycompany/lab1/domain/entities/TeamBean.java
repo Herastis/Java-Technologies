@@ -5,12 +5,19 @@
 package com.mycompany.lab1.domain.entities;
 
 import java.io.Serializable;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.*;
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIInput;
 import javax.inject.Named;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+import org.postgresql.ds.PGSimpleDataSource;
 
 /**
  *
@@ -81,12 +88,12 @@ public class TeamBean implements Serializable {
         teamsService();
     }
 
+    @Resource(name = "poolResource")
+    DataSource ds;
+
     public void teamsService() {
         try {
-            Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/postgres", "postgres", "ASD");
-
+            Connection con = ds.getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from teams");
             while (rs.next()) {

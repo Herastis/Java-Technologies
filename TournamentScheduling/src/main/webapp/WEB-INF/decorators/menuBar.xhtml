@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <!-- VIEW items -->
+        <ui:composition template="/WEB-INF/templates/dataView.xhtml">
+            <ui:define name="dataViewContent">
+                <my:dataTable dataView="#{itemsView}"
+                              var="item"
+                              rowKey="#{banca.id}">
+                    <f:facet name="header"> #{pageTitle} </f:facet>
+                    <p:column headerText="#{msg['item']}"
+                              sortBy="#{item.name}">
+                        <h:outputText value="#{item.name}" />
+                    </p:column>
+                </my:dataTable>
+            </ui:define>
+        </ui:composition>
+
+        <!-- EDIT some item -->
+        <ui:composition template="/WEB-INF/templates/dataEdit.xhtml">
+            <ui:param name="dataEdit" value="#{itemEdit}" />
+            <ui:define name="dataEditContent">
+                <h:panelGrid id="bancaPanel" columns="2" cellpadding="5">
+                    <p:outputLabel for="nume" value="#{msg['nume']}" />
+                    <p:inputText id="nume" required="true" size="50"
+                                 validator="#{itemEdit.validateName}"
+                                 value="#{itemEdit.entity.name}">
+
+                        <f:validateLength maximum="100"/>
+                    </p:inputText>
+                </h:panelGrid>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
