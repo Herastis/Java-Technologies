@@ -38,3 +38,17 @@ Create the support for managing the teams, using a datatable. ✔️
 Define a page for creating a new team or editing an existing one, using a modal dialog.✔️
 Define the web-flow using navigation-rules.✔️
 Internationalize the user interface and offer support for at least two locales.✔️
+
+Lab 4
+
+Compulsory (1p)
+Implement an efficient way for obtaining connections to the database.✔️
+Configure a connection pool and a JDBC resource using an administrative tool (such as GlassFish/Payara Console or asadmin).✔️
+Create DatSource objects using either JNDI directly or resource injection.✔️
+
+Homework (2p)
+Create the pages using templates:
+page.xhtml: describing the general aspect of the application pages: header, content, footer. The header should display the title and might include a menu bar.✔️
+The footer will display a copyright notice and the current version of the aplication. The header, footer and the menu bar should all be in separate .xhtml files.✔️
+dataView.xhtml: a generic page for displaying data as a list, dataTable, etc.✔️
+dataEdit.xhtml: a generic page for editing data. This could be a dialog containing a generic form.✔️

@@ -4,12 +4,54 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Content</title>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div class="card">
+            <h5>Edit</h5>
+            <p:commandButton value="Show" type="button" icon="pi pi-external-link" onclick="PF('dlg1').show()"/>
+
+            <h5>Add</h5>
+            <p:commandButton value="Show" type="button" icon="pi pi-external-link" onclick="PF('dlg2').show()"/>
+        </div>
+
+        <p:dialog header="Header" widgetVar="dlg1" minHeight="40" width="350" showEffect="fade" modal="true">
+            <h2>Edit team:</h2>
+            <h:form>
+                <p>Name:
+                    <h:inputText value="#{teamBean.nameComponent}"><f:ajax></f:ajax>  </h:inputText>
+                </p>
+
+                <p>Founding date:
+                    <h:inputText binding="#{teamBean.dateComponent}"><f:ajax></f:ajax>  </h:inputText>
+                </p>
+
+                <p>City:
+                    <h:inputText binding="#{teamBean.cityComponent}"  ><f:ajax></f:ajax>  </h:inputText>
+                </p>
+            </h:form>
+        </p:dialog>
+
+        <p:dialog header="Header" widgetVar="dlg2" minHeight="40" width="350" showEffect="fade" modal="true">
+            <h2>Add new team:</h2>
+            <h:form>
+                <p>Name:
+                    <h:inputText value="#{teamBean.nameComponent}"><f:ajax></f:ajax>  </h:inputText>
+                </p>
+
+                <p>Founding date:
+                    <h:inputText binding="#{teamBean.dateComponent}"><f:ajax></f:ajax>  </h:inputText>
+                </p>
+
+                <p>City:
+                    <h:inputText binding="#{teamBean.cityComponent}"  ><f:ajax></f:ajax>  </h:inputText>
+                </p>
+            </h:form>
+        </p:dialog>
     </body>
 </html>
