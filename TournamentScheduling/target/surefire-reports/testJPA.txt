@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: testJPA
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.042 s <<< FAILURE! - in testJPA
+testJPA  Time elapsed: 0.033 s  <<< ERROR!
+javax.persistence.PersistenceException: No Persistence provider for EntityManager named pu
+	at testJPA.testJPA(testJPA.java:49)
+

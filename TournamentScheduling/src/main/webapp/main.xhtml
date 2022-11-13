@@ -3,7 +3,7 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="content">
-        <h:form id="datamy:dataTable">
+        <h:form id="dataTable">
             <p:dataTable  var="item" value="#{teamBean.teamsInfoAll}">
                 <p:column headerText="team">
                     <h:outputText value="#{item.name}" />

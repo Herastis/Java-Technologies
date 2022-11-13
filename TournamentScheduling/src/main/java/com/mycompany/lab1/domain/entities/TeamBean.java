@@ -8,16 +8,28 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIInput;
 import javax.inject.Named;
-import javax.naming.Context;
-import javax.naming.InitialContext;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.sql.DataSource;
-import org.postgresql.ds.PGSimpleDataSource;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -25,8 +37,94 @@ import org.postgresql.ds.PGSimpleDataSource;
  */
 @Named(value = "teamBean")
 @SessionScoped
+@Entity
+@Table(name = "teams")
+@NamedQueries({
+    @NamedQuery(name = "Teams.findAll", query = "SELECT t FROM Teams t"),
+    @NamedQuery(name = "Teams.findByFoundingdate", query = "SELECT t FROM Teams t WHERE t.foundingdate = :foundingdate"),
+    @NamedQuery(name = "Teams.findByName", query = "SELECT t FROM Teams t WHERE t.name = :name"),
+    @NamedQuery(name = "Teams.findById", query = "SELECT t FROM Teams t WHERE t.id = :id")})
 public class TeamBean implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    @Column(name = "foundingdate")
+    @Temporal(TemporalType.DATE)
+    private Date foundingdate;
+    @Size(max = 20)
+    @Column(name = "name")
+    private String name;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "id")
+    private Integer id;
+    @JoinColumn(name = "cityid", referencedColumnName = "cityid")
+    @ManyToOne(optional = false)
+    private CityBean cityid;
+
+    public TeamBean() {
+    }
+
+    public TeamBean(Integer id) {
+        this.id = id;
+    }
+
+    public Date getFoundingdate() {
+        return foundingdate;
+    }
+
+    public void setFoundingdate(Date foundingdate) {
+        this.foundingdate = foundingdate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public CityBean getCityid() {
+        return cityid;
+    }
+
+    public void setCityid(CityBean cityid) {
+        this.cityid = cityid;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof TeamBean)) {
+            return false;
+        }
+        TeamBean other = (TeamBean) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "com.mycompany.lab1.domain.entities.Teams[ id=" + id + " ]";
+//    }
     public UIInput getNameComponent() {
         return nameComponent;
     }
@@ -118,5 +216,4 @@ public class TeamBean implements Serializable {
     public void cityComponenttMethod() {
         cityComponent.setRendered(false);
     }
-
 }
