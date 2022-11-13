@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="testJPA" time="0.042" tests="1" errors="1" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="testJPA" time="0.039" tests="1" errors="1" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -17,7 +17,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.16\bin"/>
-    <property name="sun.java.command" value="C:\Users\ttomescu\AppData\Local\Temp\surefire554281841736208828\surefirebooter15016162017475277402.jar C:\Users\ttomescu\AppData\Local\Temp\surefire554281841736208828 2022-11-13T18-59-53_887-jvmRun1 surefire11418435273950481350tmp surefire_01151146766716495601tmp"/>
+    <property name="sun.java.command" value="C:\Users\ttomescu\AppData\Local\Temp\surefire13730179149176858189\surefirebooter851524812193241319.jar C:\Users\ttomescu\AppData\Local\Temp\surefire13730179149176858189 2022-11-13T19-38-36_791-jvmRun1 surefire14127803383766715463tmp surefire_02089019251498445349tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="testJPA#testJPA"/>
     <property name="surefire.test.class.path" value="C:\Users\ttomescu\OneDrive - Centric\Documents\GitHub\Java-Technologies\TournamentScheduling\target\test-classes;C:\Users\ttomescu\OneDrive - Centric\Documents\GitHub\Java-Technologies\TournamentScheduling\target\classes;C:\Users\ttomescu\.m2\repository\jakarta\platform\jakarta.jakartaee-api\8.0.0\jakarta.jakartaee-api-8.0.0.jar;C:\Users\ttomescu\.m2\repository\org\primefaces\primefaces\11.0.0\primefaces-11.0.0.jar;C:\Users\ttomescu\.m2\repository\org\postgresql\postgresql\42.5.0\postgresql-42.5.0.jar;C:\Users\ttomescu\.m2\repository\org\checkerframework\checker-qual\3.5.0\checker-qual-3.5.0.jar;C:\Users\ttomescu\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\ttomescu\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\ttomescu\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\ttomescu\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\ttomescu\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\ttomescu\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\ttomescu\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
@@ -34,7 +34,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\ttomescu\AppData\Local\Temp\surefire554281841736208828\surefirebooter15016162017475277402.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ttomescu\AppData\Local\Temp\surefire13730179149176858189\surefirebooter851524812193241319.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.16+11-LTS-199"/>
@@ -62,11 +62,11 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="testJPA" classname="testJPA" time="0.033">
-    <error message="No Persistence provider for EntityManager named pu" type="javax.persistence.PersistenceException">javax.persistence.PersistenceException: No Persistence provider for EntityManager named pu
+  <testcase name="testJPA" classname="testJPA" time="0.032">
+    <error message="No Persistence provider for EntityManager named poolResource" type="javax.persistence.PersistenceException">javax.persistence.PersistenceException: No Persistence provider for EntityManager named poolResource
 	at testJPA.testJPA(testJPA.java:49)
 </error>
-    <system-err><![CDATA[Nov 13, 2022 6:59:54 PM javax.persistence.spi.PersistenceProviderResolverHolder$DefaultPersistenceProviderResolver log
+    <system-err><![CDATA[Nov 13, 2022 7:38:37 PM javax.persistence.spi.PersistenceProviderResolverHolder$DefaultPersistenceProviderResolver log
 WARNING: javax.persistence.spi::No valid providers found.
 ]]></system-err>
   </testcase>

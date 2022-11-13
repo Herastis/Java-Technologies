@@ -121,10 +121,6 @@ public class TeamBean implements Serializable {
         return true;
     }
 
-//    @Override
-//    public String toString() {
-//        return "com.mycompany.lab1.domain.entities.Teams[ id=" + id + " ]";
-//    }
     public UIInput getNameComponent() {
         return nameComponent;
     }

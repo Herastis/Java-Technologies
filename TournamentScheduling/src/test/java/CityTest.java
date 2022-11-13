@@ -5,6 +5,8 @@
 
 import com.mycompany.lab1.domain.entities.CityBean;
 import com.mycompany.lab1.domain.entities.TeamBean;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -14,18 +16,26 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import repositories.CityRepository;
 
 /**
  *
  * @author ttomescu
  */
-public class testJPA {
+public class CityTest {
 
-    public testJPA() {
+    long idMock = 3;
+    String nameMock = "Vaslui";
+    CityBean cityMock = new CityBean();
+    List<CityBean> citiesMock = new ArrayList<CityBean>();
+    CityRepository cityRepositoryMock = new CityRepository();
+
+    public CityTest() {
     }
 
     @BeforeAll
     public static void setUpClass() {
+
     }
 
     @AfterAll
@@ -46,7 +56,7 @@ public class testJPA {
     @Test
     public void testJPA() {
         EntityManagerFactory emf
-                = Persistence.createEntityManagerFactory("pu");
+                = Persistence.createEntityManagerFactory("poolResource");
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
@@ -62,4 +72,44 @@ public class testJPA {
         em.close();
         emf.close();
     }
+
+    @Test
+    public void FindAllTest() {
+        List<CityBean> result = cityRepositoryMock.findAll();
+        assertEquals(result, citiesMock);
+    }
+
+    @Test
+    public void FindByCityIdTest() {
+        CityBean result = cityRepositoryMock.findByCityid(idMock);
+        assertNotNull(result);
+    }
+
+    @Test
+    public void FindByNameTest() {
+        CityBean result = cityRepositoryMock.findByName(nameMock);
+        assertNotNull(result);
+    }
+
+    @Test
+    public void CreateTest() {
+        String createdCityName = cityMock.getName();
+        cityRepositoryMock.create(cityMock);
+        assertNotNull(cityRepositoryMock.findByName(createdCityName));
+    }
+
+    @Test
+    public void EditTest() {
+        cityMock.setName("Bucuresti");
+        cityRepositoryMock.edit(cityMock);
+        assertEquals("Bucuresti", cityMock.getName());
+    }
+
+    @Test
+    public void RemoveTest() {
+        String nameDeletedCity = cityMock.getName();
+        cityRepositoryMock.remove(cityMock);
+        assertNull(cityRepositoryMock.findByName(nameDeletedCity));
+    }
+
 }
