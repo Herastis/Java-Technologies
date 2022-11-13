@@ -52,3 +52,18 @@ page.xhtml: describing the general aspect of the application pages: header, cont
 The footer will display a copyright notice and the current version of the aplication. The header, footer and the menu bar should all be in separate .xhtml files.✔️
 dataView.xhtml: a generic page for displaying data as a list, dataTable, etc.✔️
 dataEdit.xhtml: a generic page for editing data. This could be a dialog containing a generic form.✔️
+
+Lab 5
+
+Compulsory (1p)
+
+Define the persistence unit using a data source configured as a JDBC Resource. ✔️
+Define at least one entity class and perform a simple test in order to verify the communication with the database. ✔️
+
+Homework (2p)
+
+Create the EntityManager objects using dependency injection. ✔️
+Define the mappings using JPA-only annotations. ✔️
+Create named queries using JPA-QL. ✔️
+Implement the repository classes. ✔️
+Create a complete test unit for the CRUD operations of at least one entity class. ✔️
