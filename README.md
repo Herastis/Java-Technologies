@@ -67,3 +67,14 @@ Define the mappings using JPA-only annotations. ✔️
 Create named queries using JPA-QL. ✔️
 Implement the repository classes. ✔️
 Create a complete test unit for the CRUD operations of at least one entity class. ✔️
+
+Lab 6
+
+A stateless session bean that offers methods for checking the availability of a period in a week. ✔️
+-CheckPeriodAvailabilityRepository.java
+
+A stateful session bean responsible with the assignment of one or more matches. The assignment should be atomic, either all matches are successfully scheduled, or the transaction will be rolled back. ✔️
+-AssignMatchStatefulBean.java
+
+A singleton session bean that keeps an in-memory map of the current assignments. The map will be instantiated at application startup and updated whenever the assignments change.
+-CurrentAssignmentsSingletonBean.java
