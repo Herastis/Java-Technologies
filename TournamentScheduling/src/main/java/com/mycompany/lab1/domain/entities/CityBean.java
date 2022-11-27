@@ -30,15 +30,16 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Cities.findByName", query = "SELECT c FROM Cities c WHERE c.name = :name")})
 public class CityBean implements Serializable {
 
+    @Size(max = 20)
+    @Column(name = "name")
+    private String name;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "cityid")
     private Integer cityid;
-    @Size(max = 20)
-    @Column(name = "name")
-    private String name;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cityid")
     private Collection<TeamBean> teamsCollection;
 
@@ -57,13 +58,6 @@ public class CityBean implements Serializable {
         this.cityid = cityid;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Collection<TeamBean> getTeamsCollection() {
         return teamsCollection;
@@ -96,6 +90,14 @@ public class CityBean implements Serializable {
     @Override
     public String toString() {
         return "com.mycompany.lab1.domain.entities.Cities[ cityid=" + cityid + " ]";
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

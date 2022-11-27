@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -24,6 +25,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,13 +48,18 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Teams.findById", query = "SELECT t FROM Teams t WHERE t.id = :id")})
 public class TeamBean implements Serializable {
 
+    @Size(max = 20)
+    @Column(name = "name")
+    private String name;
+    @OneToMany(mappedBy = "team1")
+    private Collection<MatchBean> matchesCollection;
+    @OneToMany(mappedBy = "team2")
+    private Collection<MatchBean> matchesCollection1;
+
     private static final long serialVersionUID = 1L;
     @Column(name = "foundingdate")
     @Temporal(TemporalType.DATE)
     private Date foundingdate;
-    @Size(max = 20)
-    @Column(name = "name")
-    private String name;
     @Id
     @Basic(optional = false)
     @NotNull
@@ -77,13 +84,6 @@ public class TeamBean implements Serializable {
         this.foundingdate = foundingdate;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Integer getId() {
         return id;
@@ -211,5 +211,29 @@ public class TeamBean implements Serializable {
 
     public void cityComponenttMethod() {
         cityComponent.setRendered(false);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Collection<MatchBean> getMatchesCollection() {
+        return matchesCollection;
+    }
+
+    public void setMatchesCollection(Collection<MatchBean> matchesCollection) {
+        this.matchesCollection = matchesCollection;
+    }
+
+    public Collection<MatchBean> getMatchesCollection1() {
+        return matchesCollection1;
+    }
+
+    public void setMatchesCollection1(Collection<MatchBean> matchesCollection1) {
+        this.matchesCollection1 = matchesCollection1;
     }
 }
