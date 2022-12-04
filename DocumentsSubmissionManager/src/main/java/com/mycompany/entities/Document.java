@@ -30,12 +30,6 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Document.findByContent", query = "SELECT d FROM Document d WHERE d.content = :content")})
 public class Document implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "id")
-    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -46,9 +40,20 @@ public class Document implements Serializable {
     @Size(min = 1, max = 3000)
     @Column(name = "content")
     private String content;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "registrationnumber")
+    private int registrationnumber;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "id")
+    private Integer id;
     @JoinColumn(name = "userid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private User userid;
+    private UserBean userid;
 
     public Document() {
     }
@@ -71,27 +76,11 @@ public class Document implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public User getUserid() {
+    public UserBean getUserid() {
         return userid;
     }
 
-    public void setUserid(User userid) {
+    public void setUserid(UserBean userid) {
         this.userid = userid;
     }
 
@@ -118,6 +107,30 @@ public class Document implements Serializable {
     @Override
     public String toString() {
         return "com.mycompany.Document[ id=" + id + " ]";
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public int getRegistrationnumber() {
+        return registrationnumber;
+    }
+
+    public void setRegistrationnumber(int registrationnumber) {
+        this.registrationnumber = registrationnumber;
     }
 
 }

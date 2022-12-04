@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>Register</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h:form>
+            <h:outputLabel value="Username"/>
+            <h:inputText id="username" value="#{userBean.username}"></h:inputText>
+
+            <h:outputLabel value="Password"/>
+            <h:inputSecret id="password" value="#{userBean.password}"></h:inputSecret>
+
+            <h:outputLabel value="Role"/>
+            <h:selectOneMenu id="option" value="#{userBean.role}">
+                <f:selectItem itemLabel="Admin" itemValue="admin"/>
+                <f:selectItem itemLabel="User" itemValue="user"/>
+                <f:selectItem itemLabel="Reviewer" itemValue="reviewer"/>
+            </h:selectOneMenu>
+
+            <h:commandButton action="#{userRepository.checkTimeFrame(userBean)}"
+                             value="Create"></h:commandButton>
+        </h:form>
+    </body>
+</html>

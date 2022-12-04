@@ -6,6 +6,8 @@ package com.mycompany.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,23 +24,19 @@ import javax.validation.constraints.Size;
  *
  * @author tomes
  */
+@SessionScoped
+@Named
 @Entity
 @Table(name = "users")
 @NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-    @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id"),
-    @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.name = :name"),
-    @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
-    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
-    @NamedQuery(name = "User.findByRole", query = "SELECT u FROM User u WHERE u.role = :role")})
-public class User implements Serializable {
+    @NamedQuery(name = "UserBean.findAll", query = "SELECT u FROM UserBean u"),
+    @NamedQuery(name = "UserBean.findById", query = "SELECT u FROM UserBean u WHERE u.id = :id"),
+    @NamedQuery(name = "UserBean.findByName", query = "SELECT u FROM UserBean u WHERE u.name = :name"),
+    @NamedQuery(name = "UserBean.findByUsername", query = "SELECT u FROM UserBean u WHERE u.username = :username"),
+    @NamedQuery(name = "UserBean.findByPassword", query = "SELECT u FROM UserBean u WHERE u.password = :password"),
+    @NamedQuery(name = "UserBean.findByRole", query = "SELECT u FROM UserBean u WHERE u.role = :role")})
+public class UserBean implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "id")
-    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -62,14 +60,22 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userid")
     private Collection<Document> documentCollection;
 
-    public User() {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "id")
+    private Integer id;
+
+
+    public UserBean() {
     }
 
-    public User(Integer id) {
+    public UserBean(Integer id) {
         this.id = id;
     }
 
-    public User(Integer id, String name, String username, String password, String role) {
+    public UserBean(Integer id, String name, String username, String password, String role) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -83,6 +89,32 @@ public class User implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof UserBean)) {
+            return false;
+        }
+        UserBean other = (UserBean) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.mycompany.entities.UserBean[ id=" + id + " ]";
     }
 
     public String getName() {
@@ -123,31 +155,6 @@ public class User implements Serializable {
 
     public void setDocumentCollection(Collection<Document> documentCollection) {
         this.documentCollection = documentCollection;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.mycompany.User[ id=" + id + " ]";
     }
 
 }

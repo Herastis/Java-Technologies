@@ -25,7 +25,7 @@ public class LoginDAO {
 
         try {
             con = DriverManager.getConnection(url, usernameDB, passwordDB);
-            ps = con.prepareStatement("Select u.username, u.password from User u where u.username = ? and u.password = ?");
+            ps = con.prepareStatement("Select u.username, u.password from Users u where u.username = ? and u.password = ?");
             ps.setString(1, user);
             ps.setString(2, password);
 
@@ -45,7 +45,32 @@ public class LoginDAO {
         return false;
     }
 
-    public static boolean isAdmin(String user, String pwd) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public static boolean isAdmin(String user, String password) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        String url = "jdbc:postgresql://localhost:5432/postgres";
+        String usernameDB = "postgres";
+        String passwordDB = "asd";
+
+        try {
+            con = DriverManager.getConnection(url, usernameDB, passwordDB);
+            ps = con.prepareStatement("Select role from users where username = ? and password = ?");
+            ps.setString(1, user);
+            ps.setString(2, password);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String role = rs.getString("role");
+                boolean isAdmin = "admin".equals(role);
+                if (isAdmin) {
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("Login error -->" + ex.getMessage());
+            return false;
+        }
+        return false;
     }
 }
