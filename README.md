@@ -78,3 +78,19 @@ A stateful session bean responsible with the assignment of one or more matches. 
 
 A singleton session bean that keeps an in-memory map of the current assignments. The map will be instantiated at application startup and updated whenever the assignments change.
 -CurrentAssignmentsSingletonBean.java
+
+Lab 7
+
+(2p) 
+An [authentication](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/entities/Login.java) mechanism based on username and password (implement it as you please, we'll rewrite it soon).✔️
+Register new users and assign them a specific role, for example admin, author, reviewer, etc.✔️
+Specify a time frame, in which registration is open for users and submissions.✔️
+The possibility to upload a document (for [authors](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/webapp/author.xhtml)) and to view all uploaded documents (for [admin](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/webapp/admin.xhtml)). Each uploaded document will have a uniquely generated registration number. All submissions will be logged in a text file.✔️
+
+(3p) Use Contexts and Dependency Injection (CDI) for:
+(0.5) the management of application's beans ([@Inject](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/repositories/DocumentRepository.java)) and transactions ([@Transactional](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/repositories/UserRepository.java));✔️
+(0.5) decoupling the components using dependency injection (for example, use a producer method to generate registration numbers) ([@Produces](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/utils/NumberGenerator.java));✔️
+(0.5) decoupling orthogonal concerns, such as logging; ([@Interceptor](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/logging/MyInterceptor.java))✔️
+(0.5) decoupling bussines concerns, such as verifying the date for operations like registration and submission ([@Decorator](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/repositories/UserRepositoryDecorator.java));✔️
+(0.5) implementing at least one event-based comunication (for instance, whenever a new document is uploaded a message is produced and all observers of this type of event will be notified) ([@Observes](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/entities/DocumentsList.java));✔️
+(0.5) data validation, using Bean Validation [annotations](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/entities/UserBean.java).✔️
