@@ -45,7 +45,7 @@ public class UserBean implements Serializable {
     private String name;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 2147483647)
+    @Size(min = 1, max = 30)
     @Column(name = "username")
     private String username;
     @Basic(optional = false)
