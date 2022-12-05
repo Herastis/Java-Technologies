@@ -34,7 +34,8 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "UserBean.findByName", query = "SELECT u FROM UserBean u WHERE u.name = :name"),
     @NamedQuery(name = "UserBean.findByUsername", query = "SELECT u FROM UserBean u WHERE u.username = :username"),
     @NamedQuery(name = "UserBean.findByPassword", query = "SELECT u FROM UserBean u WHERE u.password = :password"),
-    @NamedQuery(name = "UserBean.findByRole", query = "SELECT u FROM UserBean u WHERE u.role = :role")})
+    @NamedQuery(name = "UserBean.findByRole", query = "SELECT u FROM UserBean u WHERE u.role = :role"),
+    @NamedQuery(name = "UserBean.countUsers", query = "SELECT COUNT(u) FROM UserBean u")})
 public class UserBean implements Serializable {
 
     @Basic(optional = false)
@@ -67,7 +68,6 @@ public class UserBean implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-
     public UserBean() {
     }
 
@@ -90,7 +90,6 @@ public class UserBean implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
 
     @Override
     public int hashCode() {

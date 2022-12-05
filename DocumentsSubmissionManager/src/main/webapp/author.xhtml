@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Author upload</title>
+    </h:head>
+    <body>
+        <h:form>
+            <h:outputLabel for="documentName" value="Name"/>
+            <h:inputText id="documentName" value="#{document.name}" required="true"/>
+
+            <h:outputLabel for="documentContent" value="Content"/>
+            <h:inputText id="documentContent" value="#{document.content}" required="true"/>
+
+            <h:commandButton id="submit_exam"
+                             value="Submit document" action="#{documentsList.checkSubmissionAvailability(documentBean)}"/>
+        </h:form>
+    </body>
+</html>

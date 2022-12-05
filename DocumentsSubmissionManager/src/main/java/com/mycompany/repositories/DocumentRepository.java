@@ -8,6 +8,8 @@ import com.mycompany.entities.Document;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.enterprise.inject.Instance;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -21,19 +23,28 @@ public class DocumentRepository {
     @PersistenceContext(unitName = "my_persistence_unit")
     private EntityManager em;
 
-    //interceptor
+    @Inject
+    Instance<Integer> randomInt;
+
+    int registrationNumber = randomInt.get();
+
     public void save(Document document) {
         Document documentEntiy = new Document();
-        documentEntiy.setId(document.getId());
+        documentEntiy.setId(countDocuments() + 1);
         documentEntiy.setName(document.getName());
         documentEntiy.setContent(document.getContent());
-        documentEntiy.setRegistrationnumber(document.getRegistrationnumber());
+        documentEntiy.setRegistrationnumber(registrationNumber);
         em.persist(documentEntiy);
     }
 
     public List<Document> getAll() {
         Query query = em.createNamedQuery("Document.getAll");
-        return ((Collection<Document>) query.getResultList()).stream().collect(Collectors.toList());
+        return (List<Document>) (query.getResultList()).stream().collect(Collectors.toList());
+    }
+
+    public int countDocuments() {
+        Query query = em.createNamedQuery("Document.countDocuments");
+        return (int) query.getSingleResult();
     }
 
 }

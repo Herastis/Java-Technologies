@@ -5,6 +5,7 @@
 package com.mycompany.entities;
 
 import java.io.Serializable;
+import javax.inject.Named;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,13 +22,15 @@ import javax.validation.constraints.Size;
  *
  * @author tomes
  */
+@Named
 @Entity
 @Table(name = "document")
 @NamedQueries({
     @NamedQuery(name = "Document.findAll", query = "SELECT d FROM Document d"),
     @NamedQuery(name = "Document.findById", query = "SELECT d FROM Document d WHERE d.id = :id"),
     @NamedQuery(name = "Document.findByName", query = "SELECT d FROM Document d WHERE d.name = :name"),
-    @NamedQuery(name = "Document.findByContent", query = "SELECT d FROM Document d WHERE d.content = :content")})
+    @NamedQuery(name = "Document.findByContent", query = "SELECT d FROM Document d WHERE d.content = :content"),
+    @NamedQuery(name = "Document.countDocuments", query = "SELECT COUNT(d) FROM Document d")})
 public class Document implements Serializable {
 
     @Basic(optional = false)
@@ -35,25 +38,28 @@ public class Document implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "name")
     private String name;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 3000)
     @Column(name = "content")
     private String content;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "registrationnumber")
     private int registrationnumber;
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "id")
     private Integer id;
-    @JoinColumn(name = "userid", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private UserBean userid;
+//    @JoinColumn(name = "userid", referencedColumnName = "id")
+//    @ManyToOne(optional = false)
+//    private UserBean userid;
 
     public Document() {
     }
@@ -76,14 +82,13 @@ public class Document implements Serializable {
         this.id = id;
     }
 
-    public UserBean getUserid() {
-        return userid;
-    }
-
-    public void setUserid(UserBean userid) {
-        this.userid = userid;
-    }
-
+//    public UserBean getUserid() {
+//        return userid;
+//    }
+//
+//    public void setUserid(UserBean userid) {
+//        this.userid = userid;
+//    }
     @Override
     public int hashCode() {
         int hash = 0;

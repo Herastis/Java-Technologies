@@ -5,9 +5,9 @@
 package com.mycompany.entities;
 
 import com.mycompany.dao.LoginDAO;
+import com.mycompany.logging.Logging;
 import java.io.IOException;
 import java.io.Serializable;
-import static java.rmi.server.LogStream.log;
 import java.sql.SQLException;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -41,26 +41,22 @@ public class Login implements Serializable {
         this.username = user;
     }
 
-    //validate login
     public String validateUsernamePassword() throws SQLException, IOException {
         boolean valid = LoginDAO.validate(username, password);
         System.out.println(valid);
         if (valid) {
-            log("Login successful with credentials user: " + username + ", password: " + password);
             if (LoginDAO.isAdmin(username, password)) {
-                System.out.println("forwarding to admin page");
                 return "admin";
             } else {
-                System.out.println("forwarding to user page");
-                return "user";
+                return "author";
             }
         } else {
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
                             "Incorrect Username and Password",
-                            "Please enter correct username and Password"));
-            return "index";
+                            "Please enter correct username and password"));
+            return "login";
         }
     }
 

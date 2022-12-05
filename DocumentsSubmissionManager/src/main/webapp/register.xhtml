@@ -13,6 +13,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     </head>
     <body>
         <h:form>
+            <h:outputLabel value="Name"/>
+            <h:inputText id="name" value="#{userBean.name}"></h:inputText>
+
             <h:outputLabel value="Username"/>
             <h:inputText id="username" value="#{userBean.username}"></h:inputText>
 
@@ -26,7 +29,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <f:selectItem itemLabel="Reviewer" itemValue="reviewer"/>
             </h:selectOneMenu>
 
-            <h:commandButton action="#{userRepository.checkTimeFrame(userBean)}"
+            <h:commandButton action="#{userRepository.checkSubmissionAvailability(userBean)}"
                              value="Create"></h:commandButton>
         </h:form>
     </body>

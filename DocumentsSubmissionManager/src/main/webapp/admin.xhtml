@@ -4,18 +4,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <head>
         <title>Homepage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
         <div>Admin page</div>
+
         <div class="card">
-            <p:dataTable id="document" var="document" value="#{database.documents}">
+            <p:dataTable id="document" var="document" value="#{documentsList.documents}">
                 <p:column headerText="Registration Number">
-                    <h:outputText value="#{document.id}"/>
+                    <h:outputText value="#{document.registrationnumber}"/>
                 </p:column>
+
                 <p:column headerText="Name">
                     <h:outputText value="#{document.name}"/>
                 </p:column>
