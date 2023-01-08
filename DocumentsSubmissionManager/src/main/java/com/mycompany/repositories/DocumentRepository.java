@@ -42,9 +42,22 @@ public class DocumentRepository {
         return (List<Document>) (query.getResultList()).stream().collect(Collectors.toList());
     }
 
+    public Document findById(int id) {
+        Query query = em.createNamedQuery("Document.findById");
+        query.setParameter("id", id);
+        return (Document) query.getSingleResult();
+    }
+
     public int countDocuments() {
         Query query = em.createNamedQuery("Document.countDocuments");
         return (int) query.getSingleResult();
+    }
+
+    public void remove(int id) {
+        Document docToBeRemoved = findById(id);
+        em.getTransaction().begin();
+        em.remove(docToBeRemoved);
+        em.getTransaction().commit();
     }
 
 }
