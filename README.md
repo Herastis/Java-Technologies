@@ -94,3 +94,12 @@ The possibility to upload a document (for [authors](https://github.com/Herastis/
 (0.5) decoupling bussines concerns, such as verifying the date for operations like registration and submission ([@Decorator](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/repositories/UserRepositoryDecorator.java));✔️
 (0.5) implementing at least one event-based comunication (for instance, whenever a new document is uploaded a message is produced and all observers of this type of event will be notified) ([@Observes](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/entities/DocumentsList.java));✔️
 (0.5) data validation, using Bean Validation [annotations](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/entities/UserBean.java).✔️
+
+Lab 8
+
+(2p) Create RESTful Web services using JAX-RS that allow the interaction with at least one JPA entity, implementing CRUD operations. For example, the application may offer a resource containing the following services:
+-adding a new document to the database: [AddDocumentService](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/services/AddDocumentService.java); 
+-replacing an existing document [ReplaceDocumentService](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/services/ReplaceDocumentService.java); 
+-deleting an existing document. [DeleteDocumentService](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/services/DeleteDocumentService.java); 
+-returning a "list" of the documents that were uploaded. The parameter of the web method will be an identifier for the user. If the parameter is null, then all documents should be considered. [GetUploadedDocumentsService](https://github.com/Herastis/Java-Technologies/blob/main/DocumentsSubmissionManager/src/main/java/com/mycompany/services/GetUploadedDocumentsService.java); 
+Use JSON for representing consumed or produced data. Comment (using OpenAPI) and test at least one service.
